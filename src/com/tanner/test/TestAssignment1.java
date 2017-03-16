@@ -58,24 +58,17 @@ public class TestAssignment1 {
 		List<WebElement> menuItems = navContainer.findElements(By.tagName("li"));
 		//List<WebElement> menuItems = navContainer.findElements(By.xpath(".//*[@id='main-nav-container']"));
 		System.out.println(menuItems.size());
-		int menuCount = menuItems.size();
-		
-
-		/*for (int i=1; i<=menuCount; i++){
-			dr.findElement(By.xpath(".//*[@id='main-nav']/li["+i+"]/a")).click();	
-			
-			System.out.println(dr.getCurrentUrl());
-		}*/
-		/* for(int i = 0; i < menuItems.size(); i++){
-		        if(!(menuItems.get(i).getAttribute("href") == null) && !(menuItems.get(i).getAttribute("href").equals(""))){
-		            if(menuItems.get(i).getAttribute("href").contains("http")){
-		                statusCode= getResponseCode(menuItems.get(i).getAttribute("href").trim());
-		                if(statusCode == 403){
-		                    System.out.println("HTTP 403 Forbidden # " + i + " " + menuItems.get(i).getAttribute("href"));
-		                }
-		            }
-		        }
-	}*/
+		for (WebElement liEle : menuItems){
+			WebElement anchorEle = liEle.findElement(By.tagName("a"));
+			try {
+				anchorEle.click();
+			}
+			catch (Exception e){
+				System.out.println("Anchor link not working");
+				String anchorHref = anchorEle.getAttribute("href");
+				throw MalformedURLException("anchorHref "+ "is not working");
+			}
+		}
 	}
 	
 	public static int getResponseCode(String urlString) throws MalformedURLException, IOException{
