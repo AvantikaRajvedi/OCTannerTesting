@@ -58,15 +58,17 @@ public class TestAssignment1 {
 		List<WebElement> menuItems = navContainer.findElements(By.tagName("li"));
 		//List<WebElement> menuItems = navContainer.findElements(By.xpath(".//*[@id='main-nav-container']"));
 		System.out.println(menuItems.size());
+		String baseURL = "http://www.octanner.com"
 		for (WebElement liEle : menuItems){
 			WebElement anchorEle = liEle.findElement(By.tagName("a"));
 			try {
-				anchorEle.click();
-				Thread.sleep(5000);
+				String anchorHref = anchorEle.getAttribute("href");
+				int errorCode = getResponseCode(baseURL+anchorHref);
+				if (errorCode != 200){
+					throw new MalformedURLException(anchorHref+ " is not working");
+				}
 			}
 			catch (Exception e){
-				System.out.println("Anchor link not working");
-				String anchorHref = anchorEle.getAttribute("href");
 				throw new MalformedURLException(anchorHref+ " is not working");
 			}
 		}
