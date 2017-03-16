@@ -25,12 +25,12 @@ public class TestAssignment1 {
 	public static WebDriver dr;
 	private static int statusCode;
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws MalformedURLException, IOException{
 	TestAssignment1.HomePage();
 	}
 	
 	@BeforeMethod
-	public static void HomePage() {
+	public static void HomePage() throws MalformedURLException, IOException {
 		System.setProperty("webdriver.gecko.driver", "C://SeleniumGecko//geckodriver-v0.14.0-win64//geckodriver.exe");
 	    
 		if(dr==null){
@@ -39,8 +39,8 @@ public class TestAssignment1 {
 		dr.manage().window().maximize();
 		dr.manage().timeouts().implicitlyWait(15L, TimeUnit.SECONDS);
 		
-		testMenuFirst();
-		//testMenus();
+		//testMenuFirst();
+		testMenus();
 		}
 		
 		
@@ -62,11 +62,12 @@ public class TestAssignment1 {
 			WebElement anchorEle = liEle.findElement(By.tagName("a"));
 			try {
 				anchorEle.click();
+				Thread.sleep(5000);
 			}
 			catch (Exception e){
 				System.out.println("Anchor link not working");
 				String anchorHref = anchorEle.getAttribute("href");
-				throw MalformedURLException(anchorHref+ "is not working");
+				throw new MalformedURLException(anchorHref+ " is not working");
 			}
 		}
 	}
@@ -79,13 +80,13 @@ public class TestAssignment1 {
 	    return huc.getResponseCode();
 	}
 	
-	@Test(priority=1)
+	/*@Test(priority=1)
 	public static void testMenuFirst(){
 
-		/*for (WebElement liEle : menuItems){
+		for (WebElement liEle : menuItems){
 			WebElement anchorEle = liEle.findElement(By.tagName("a"));
 			anchorEle.click();
-		}*/
+		}
 
 		
 	
@@ -229,7 +230,7 @@ public class TestAssignment1 {
 		//ClosePage();
 		//dr.quit();
 	
-	}
+	}*/
 	
 	@AfterClass
 	public static void ClosePage() {
