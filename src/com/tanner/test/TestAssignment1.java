@@ -50,19 +50,23 @@ public class TestAssignment1 {
 	
 	
 	@Test(priority=1)
+
 	public static void testMenus() throws MalformedURLException, IOException{
-		WebElement navContainer = dr.findElement(By.xpath(".//*[@id='main-nav']"));
+			
+		WebElement navContainer = dr.findElement(By.id("main-nav"));
+
 		List<WebElement> menuItems = navContainer.findElements(By.tagName("li"));
 		//List<WebElement> menuItems = navContainer.findElements(By.xpath(".//*[@id='main-nav-container']"));
 		System.out.println(menuItems.size());
 		int menuCount = menuItems.size();
 		
+
 		/*for (int i=1; i<=menuCount; i++){
 			dr.findElement(By.xpath(".//*[@id='main-nav']/li["+i+"]/a")).click();	
 			
 			System.out.println(dr.getCurrentUrl());
 		}*/
-		 for(int i = 0; i < menuItems.size(); i++){
+		/* for(int i = 0; i < menuItems.size(); i++){
 		        if(!(menuItems.get(i).getAttribute("href") == null) && !(menuItems.get(i).getAttribute("href").equals(""))){
 		            if(menuItems.get(i).getAttribute("href").contains("http")){
 		                statusCode= getResponseCode(menuItems.get(i).getAttribute("href").trim());
@@ -71,7 +75,7 @@ public class TestAssignment1 {
 		                }
 		            }
 		        }
-	}
+	}*/
 	}
 	
 	public static int getResponseCode(String urlString) throws MalformedURLException, IOException{
@@ -81,8 +85,15 @@ public class TestAssignment1 {
 	    huc.connect();
 	    return huc.getResponseCode();
 	}
+	
 	@Test(priority=1)
 	public static void testMenuFirst(){
+
+		/*for (WebElement liEle : menuItems){
+			WebElement anchorEle = liEle.findElement(By.tagName("a"));
+			anchorEle.click();
+		}*/
+
 		
 	
 		dr.findElement(By.xpath(".//*[@id='main-nav']/li[1]/a")).click();
