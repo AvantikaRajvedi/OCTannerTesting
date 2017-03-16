@@ -42,7 +42,7 @@ public class TestAssignment1 {
 	@Test(priority=1)
 	public static void testMenuFirst(){
 		
-		WebElement navContainer = dr.findElement(By.id("main-nav-container"));
+		WebElement navContainer = dr.findElement(By.id("main-nav"));
 		List<WebElement> menuItems = navContainer.findElements(By.tagName("li"));
 		System.out.println(menuItems.size());
 		
