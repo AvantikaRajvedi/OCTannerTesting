@@ -91,6 +91,7 @@ public class TestAssignment2 {
 	}*/
 	@Test(priority=2)
 	public static void findGandhi() {
+		
 		WebElement bDaySpan = dr.findElement(By.className("bday"));
 		//System.out.println("GANDHI ############## "+bDaySpan.getAttribute("innerHTML"));
 		String dateStr = bDaySpan.getAttribute("innerHTML");
