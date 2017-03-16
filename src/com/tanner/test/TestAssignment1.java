@@ -47,7 +47,8 @@ public class TestAssignment1 {
 		System.out.println(menuItems.size());
 		
 		for (WebElement liEle : menuItems){
-			// liEle.findElement(By.t)
+			WebElement anchorEle = liEle..findElement(By.tagName("a"));
+			anchorEle.click();
 		}
 		
 		dr.findElement(By.xpath(".//*[@id='main-nav']/li[1]/a")).click();
