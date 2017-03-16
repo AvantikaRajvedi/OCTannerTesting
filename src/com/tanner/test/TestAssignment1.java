@@ -66,7 +66,7 @@ public class TestAssignment1 {
 			catch (Exception e){
 				System.out.println("Anchor link not working");
 				String anchorHref = anchorEle.getAttribute("href");
-				throw MalformedURLException("anchorHref "+ "is not working");
+				throw MalformedURLException(anchorHref+ "is not working");
 			}
 		}
 	}
